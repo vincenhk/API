@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\gamax\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\gamax\\.nuget\\packages"
+    ]
+  }
+}
