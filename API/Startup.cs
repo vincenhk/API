@@ -41,12 +41,12 @@ namespace API
             services.AddDbContext<MyContext>(options =>
 
             //Eager Loading Default
-            //options.UseSqlServer(Configuration.GetConnectionString("APIContext")));
+            options.UseSqlServer(Configuration.GetConnectionString("APIContext")));
 
             //Lazy Loading 
-            options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("APIContext")));
-            services.AddControllersWithViews().AddNewtonsoftJson(options =>
-            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            //options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("APIContext")));
+            //services.AddControllersWithViews().AddNewtonsoftJson(options =>
+            //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 
             //Autentication
@@ -93,12 +93,17 @@ namespace API
 
             app.UseAuthorization();
 
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
 
         }
 

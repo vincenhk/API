@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout ="_LayoutDataTable";;
 }
 
 <!DOCTYPE html>
@@ -8,20 +8,244 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Index</title>
 </head>
-<body>
+<body class="hold-transition sidebar-mini layout-fixed" style="background-color: #f4f6f9;">
+    <content>
+        </br>
+        <table class = "table table-striped table-hover" id = "table_id">
+            <caption>Data Employee</caption>
+                <thead class = "table-dark">
+                    <tr>
+                        <td>No</td>
+                        <td>NIK</td>
+                        <td>Name</td>
+                        <td>Phone</td>
+                        <td>Email</td>
+                        <td>BirthDate</td>
+                        <td>Salary</td>
+                        <td>UniversityName</td>
+                        <td>Degree</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+            <tbody id = "tableEmployee">
+            </tbody>
+            
+        </table>
+    </content>
 </body>
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">Insert</button>
 </html>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
+<!-- Large modal -->
+<div class="modal fade bd-example-modal-lg" id = "modalAction" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Judul</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script>
-    $.ajax({
-        url: "https://localhost:44323/API/Employee/TestCORS",
-        success: function (result){
-            console.log(result);
-        }
-    })
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id = "modal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Register Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form action="" style = "position : relative; width: auto; margin : auto;" class = "" id = "form">
+          <div class= "row">
+             <div class="col border-left">
+               <div class ="row">
+                <div class = "col">
+                    <div class"form-group">
+                        <label for="firstname" >First Name</label>
+                        <input type="text" name="firstname" class="form-control" placeholder="Input Name" id = "firstName">
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class"form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" name="lastname" placeholder="Input Name" class="form-control"  id = "lastName" >
+                    </div>
+                </div>
+                </div>
+            
+            <div class = "form-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" class="form-control" placeholder="Input Phone Number" id = "phone">
+            </div>
 
-</script>
+            <div class = "form-group">
+                <label for="birthdate">BirthDate</label>
+                <input type="date" name="birthdate" class="form-control" id = "birthdate">
+            </div>
+
+            <div class = "form-group" >
+                <label for="gender">Gender</label>
+                <select name = "gender" class="form-control" id = "gender">
+                <option value = "" disabled selected>~Select Gender~</option>
+                <option value = "Pria">Laki-laki</option>
+                <option value = "Wanita">Perempuan</option>
+                </select>
+            </div>
+
+            <div class = "form-group">
+                <label for="salary">Salary</label>
+                <input type="text" name="salary" placeholder="Input Dream Salary" class="form-control" id = "salary">
+            </div>
+        </div>
+        <div class="col border-left border-right">
+            
+
+            <div class = "form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" class="form-control" placeholder="Input Email" id = "email">
+            </div>
+
+            <div class = "form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Input Password" class="form-checkbox form-control" id = "password">
+                <br/>
+			    <input type="checkbox" onclick="myFunction()"> Show Password
+            </div>
+
+            <div class = "form-group">
+                <label for="university">University</label>
+                <select name = "university" id="show-univ" class="form-control">
+                </select>
+            </div> 
+
+            <div class = "form-group">
+                <label for="degree">Degree</label>
+                <select name = "degree" class="form-control" id = "degree">
+                <option value = "" disabled selected>~Select Degree~</option>
+                <option value = "S2">S2</option>
+                <option value = "S1">S1</option>
+                <option value = "D3">D3</option>
+                <option value = "Diploma">Diploma</option>
+                <option value = "SMA">SMA</option>
+                </select>
+            </div>
+
+            <div class = "form-group">
+                <label for="gpa">GPA</label>
+                <input type="text" name="gpa" placeholder="Input GPA Number" class="form-control" id = "gpa">
+            </div>
+
+            </div>
+        </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-primary" onclick = "Insert()">Insert</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal update-->
+<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="detetedCenterModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Biodata Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form action="" style = "position : relative; width: auto; margin : auto;" class = "" id = "form-id"> 
+
+                @*<div class = "form-group" id = "u-nik">
+                    <label for="nik">NIK</label>
+                    <input type="text" name="nik" class="form-control" id = "">
+                </div>
+
+                <div class = "form-group" id = "u-firstname">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" class="form-control" id = "">
+                </div>
+                
+                <div class = "form-group" id = "u-lastname">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="firstname" class="form-control" id = "">
+                </div>
+
+                <div class = "form-group" id = "u-phone">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" class="form-control" id = "">
+                </div>
+                <div class = "form-group" id = "u-birthDate">
+                    <label for="BirthDate"> Birth Date </label>
+                    <input type="text" name="BirthDate" class="form-control" id = "">
+                </div>
+
+                <div class = "form-group" id = "u-salary">
+                    <label for="Salary">Salary</label>
+                    <input type="text" name="Salary" class="form-control" id = "">
+                </div>
+
+                <div class = "form-group" id = "u-email">
+                    <label for="Email">Email</label>
+                    <input type="text" name="Email" class="form-control" id = "">
+                </div>
+
+                <div class = "form-group" id = "u-gender">
+                    <label for="Gender">Gender</label>
+                    <input type="text" name="Gender" class="form-control" id = "">
+                </div>*@
+
+            </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-primary" onclick = "updateEmp()">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id = "modalUpdate" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick = "">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@*<button type="button" id="nameDetail" class="btn btn-primary" data-toggle="modal" data-target="#modalAction" onclick = ""><span class="bi bi-journal-text"> </span> </button>*@
+  

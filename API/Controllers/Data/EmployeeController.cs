@@ -2,6 +2,7 @@
 using API.Context;
 using API.Models;
 using API.Repository.Data;
+using API.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -26,10 +27,32 @@ namespace API.Controllers.Data
             return Ok(result);
         }
 
+        [HttpGet("EmployeeData/{NIK}")]
+        public ActionResult EmployeeMaster(string NIK)
+        {
+            var result = repository.GetAllData(NIK);
+            return Ok(result);
+        }
+
+        [HttpPut("EmployeeData")]
+        public ActionResult EmployeeMaster(GetAllData test)
+        {
+            var result = repository.updateMasterData(test);
+            if (result == 1)
+            {
+                return Ok("Update Berhasil");
+            }
+            else
+            {
+                return BadRequest("Update Gagal");
+            }
+        }
+
         [HttpGet("TestCORS")]
         public ActionResult TestCORS()
         {
-            return Ok("Test CORS Berhasil");
+            var result = repository.Get();
+            return Ok(result);
         }
     }
 }

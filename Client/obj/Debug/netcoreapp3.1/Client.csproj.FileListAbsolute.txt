@@ -108,3 +108,6 @@ C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Client.dll
 C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Client.pdb
 C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
 C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\TestCors\Index.cshtml.g.cs
+C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Index.cshtml.g.cs
+C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLatihan.cshtml.g.cs
+C:\Users\gamax\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDataTable.cshtml.g.cs

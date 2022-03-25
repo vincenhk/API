@@ -118,7 +118,7 @@ namespace API.Repository.Data
                         NIK = e.NIK,
                         Email = e.Email,
                         Password = a.Password
-                    }).SingleOrDefault(e => e.Email == inputLogin.Email); ;
+                    }).SingleOrDefault(e => e.Email == inputLogin.Email);
 
                 //ambil 1 data dari hasil join pilih email yang di input
                 //var inpPass = HashPassword(inputLogin.Password);
@@ -223,7 +223,7 @@ namespace API.Repository.Data
                     Timeout = a.ExpiredToken,
                     IsUsed = a.IsUsed
                 }).SingleOrDefault(d => d.Email == change.Email);
-
+            
             if (dataJoin != null)
             {
                 if(dataJoin.Kode != change.OTP)
@@ -272,6 +272,8 @@ namespace API.Repository.Data
             }
             
         }
+
+
 
         public LoginVM GetUserData(string email)
         {

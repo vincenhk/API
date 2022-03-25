@@ -7,9 +7,15 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
+}
+
+.sticky{
+    position : fixed;
+    top : 0px;
 }
 
 .btn-primary {
@@ -19,7 +25,7 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
+  color: cadetblue;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
@@ -58,10 +64,10 @@ html {
   min-height: 100%;
 }
 
-body {
+/*body {*/
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+  /*margin-bottom: 60px;
+}*/
 .footer {
   position: absolute;
   bottom: 0;
@@ -69,3 +75,26 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Test*/
+#button-click:hover {
+    background-color: #ea4c89
+}
+
+.pokemon {
+    background-color: #eee;
+    border-radius: 20px;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.pokemon .img-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+}
+
