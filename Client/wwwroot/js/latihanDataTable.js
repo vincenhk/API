@@ -1,5 +1,41 @@
 ﻿
+//BUAT COUNT GENDER DAN CHART
+$.ajax({
+    type: "GET",
+    url: "https://localhost:44323/Api/Employee/CountGender",
+    data: {}
+}).done((result) => {
+    var options = {
+        labels: [result[0].gender, result[1].gender],
+        series: [result[0].count, result[1].count],
+        colors: ['#F0E68C', '#CD5C5C'],
+        chart: {
+            type: 'donut'
+        },
+        plotOptions: {
+            pie: {
+                expandOnClick: false
+            }
+        },
+        responsive: [{
+            breakpoint: 200,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
 
+        }]
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+}).fail((err) => {
+    console.log(err);
+});
 
 $(document).ready(function () {
     var table = $("#table_id").DataTable({
@@ -60,66 +96,10 @@ $(document).ready(function () {
         .appendTo('#table_id .col-md-6:eq(0)');
     //Abstract call ready html form 
     getUniversity();
+    getGenderSum();
 
 })
 
-//JS Chart 
-var options = {
-    chart: {
-        height: 280,
-        type: "radialBar",
-    },
-
-    series: [67],
-    colors: ["#20E647"],
-    plotOptions: {
-        radialBar: {
-            hollow: {
-                margin: 0,
-                size: "70%",
-                background: "#293450"
-            },
-            track: {
-                dropShadow: {
-                    enabled: true,
-                    top: 2,
-                    left: 0,
-                    blur: 4,
-                    opacity: 0.15
-                }
-            },
-            dataLabels: {
-                name: {
-                    offsetY: -10,
-                    color: "#fff",
-                    fontSize: "13px"
-                },
-                value: {
-                    color: "#fff",
-                    fontSize: "30px",
-                    show: true
-                }
-            }
-        }
-    },
-    fill: {
-        type: "gradient",
-        gradient: {
-            shade: "dark",
-            type: "vertical",
-            gradientToColors: ["#87D4F9"],
-            stops: [0, 100]
-        }
-    },
-    stroke: {
-        lineCap: "round"
-    },
-    labels: ["Progress"]
-};
-
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-
-chart.render();
 
 
 jQuery.validator.setDefaults({
@@ -323,6 +303,22 @@ function Update(nik) {
         $('#form-id').html(text);
     }).fail((error) => {
         console.log(error);
+    })
+}
+
+function getGenderSum() {
+    var male = [];
+    var fimale = [];
+
+    $.ajax({
+        url: "https://localhost:44323/API/Employee",
+        dataType: "json"
+    }).done((result) => {
+        var gender = result.gender;
+        console.log(gender);
+        for (var i = 0; i < result.lenght; i++) {
+
+        }
     })
 }
 

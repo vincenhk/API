@@ -6,6 +6,7 @@ using API.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace API.Controllers.Data
 {
@@ -54,5 +55,30 @@ namespace API.Controllers.Data
             var result = repository.Get();
             return Ok(result);
         }
+
+        [HttpGet("CountGender")]
+        public ActionResult CountGender()
+        {
+            try
+            {
+                var dataCount = repository.CountGenderEmployee();
+                if (dataCount.Count != 0)
+                {
+                    return Ok(dataCount);
+                }
+                else
+                {
+                    return NotFound("Tidak ada data");
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "COUNT DATA Server Error");
+            }
+        }
+
     }
+
+    
 }

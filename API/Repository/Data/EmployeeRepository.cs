@@ -144,11 +144,14 @@ namespace API.Repository.Data
             return result;
         }
 
-        public int Update(Employee employee)
+        public ICollection CountGenderEmployee()
         {
-            context.Entry(employee).State = EntityState.Modified;
-            var result = context.SaveChanges();
-            return result;
+            var dataCount = (from e in context.Employees
+                             group e by e.Gender into grp
+                             select new { gender = grp.Key.ToString(), count = grp.Count() });
+
+            return dataCount.ToList();
         }
     }
+
 }
