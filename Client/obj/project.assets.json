@@ -6069,19 +6069,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gamax\\.nuget\\packages\\": {}
+    "C:\\Users\\A S U S\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gamax\\source\\repos\\API\\Client\\Client.csproj",
+      "projectUniqueName": "C:\\Users\\A S U S\\source\\repos\\API\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "C:\\Users\\gamax\\source\\repos\\API\\Client\\Client.csproj",
-      "packagesPath": "C:\\Users\\gamax\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gamax\\source\\repos\\API\\Client\\obj\\",
+      "projectPath": "C:\\Users\\A S U S\\source\\repos\\API\\Client\\Client.csproj",
+      "packagesPath": "C:\\Users\\A S U S\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\A S U S\\source\\repos\\API\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gamax\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\A S U S\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6130,7 +6130,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

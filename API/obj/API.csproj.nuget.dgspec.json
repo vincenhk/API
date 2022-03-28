@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gamax\\source\\repos\\API\\API\\API.csproj": {}
+    "C:\\Users\\A S U S\\source\\repos\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gamax\\source\\repos\\API\\API\\API.csproj": {
+    "C:\\Users\\A S U S\\source\\repos\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gamax\\source\\repos\\API\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\A S U S\\source\\repos\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\gamax\\source\\repos\\API\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\gamax\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gamax\\source\\repos\\API\\API\\obj\\",
+        "projectPath": "C:\\Users\\A S U S\\source\\repos\\API\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\A S U S\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\A S U S\\source\\repos\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gamax\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\A S U S\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

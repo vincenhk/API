@@ -1,5 +1,5 @@
 ﻿
-const nik = "";
+
 
 $(document).ready(function () {
     var table = $("#table_id").DataTable({
@@ -17,7 +17,7 @@ $(document).ready(function () {
             "ajax": {
             "url": "https://localhost:44323/API/Employee/EmployeeMasterData",
                 "dataTe": "JSON",
-                "dataSrc":""
+                "dataSrc": ""
             },
             "columns": [
                 { "data" : null,
@@ -55,13 +55,167 @@ $(document).ready(function () {
                 }
             ]
     })
+
     table.buttons().container()
         .appendTo('#table_id .col-md-6:eq(0)');
-
     //Abstract call ready html form 
     getUniversity();
 
 })
+
+//JS Chart 
+var options = {
+    chart: {
+        height: 280,
+        type: "radialBar",
+    },
+
+    series: [67],
+    colors: ["#20E647"],
+    plotOptions: {
+        radialBar: {
+            hollow: {
+                margin: 0,
+                size: "70%",
+                background: "#293450"
+            },
+            track: {
+                dropShadow: {
+                    enabled: true,
+                    top: 2,
+                    left: 0,
+                    blur: 4,
+                    opacity: 0.15
+                }
+            },
+            dataLabels: {
+                name: {
+                    offsetY: -10,
+                    color: "#fff",
+                    fontSize: "13px"
+                },
+                value: {
+                    color: "#fff",
+                    fontSize: "30px",
+                    show: true
+                }
+            }
+        }
+    },
+    fill: {
+        type: "gradient",
+        gradient: {
+            shade: "dark",
+            type: "vertical",
+            gradientToColors: ["#87D4F9"],
+            stops: [0, 100]
+        }
+    },
+    stroke: {
+        lineCap: "round"
+    },
+    labels: ["Progress"]
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+
+
+jQuery.validator.setDefaults({
+    debug: true,
+    success: "valid"
+});
+
+$("#form").validate({
+    rules: {
+        firstname: {
+            required: true,
+            minlength: 3
+        },
+        lastname: {
+            required: true,
+            minlength: 3
+        },
+        phone: {
+            required: true,
+            digits: true
+        },
+        birthdate: {
+            required: true,
+            date: true
+        },
+        gender: {
+            required: true
+        },
+        salary: {
+            required: true,
+            minlength: 3,
+            digits: true
+        },
+        email: {
+            required: true,
+            email: true
+        },
+        password: {
+            required: true,
+            minlength: 5
+        },
+        university: {
+            required: true
+        },
+        degree: {
+            required: true
+        },
+        gpa: {
+            required: true,
+            digits: true
+        }
+    },
+    messages: {
+        firstname: {
+            required: 'Required!',
+            minlength: 'Min 3 Character'
+        },
+        lastname: {
+            required: 'Required!',
+            minlength: 'Min 3 Character'
+        },
+        phone: {
+            required:'Required!',
+            digits: 'Should use digits!'
+        },
+        birthdate: {
+            required: 'Required!',
+            date: 'See Format date'
+        },
+        gender: {
+            required: 'Required!'
+        },
+        salary: {
+            required: 'Required!',
+            digits: 'Use digits!'
+        },
+        email: {
+            required: 'Required!',
+            email: 'Should use symbol email'
+        },
+        password: {
+            required: 'Required!',
+            minlength: 'Min 5 Character!'
+        },
+        university: {
+            required: 'Required!'
+        },
+        degree: {
+            required: 'Required!'
+        },
+        gpa: {
+            required: 'Required!',
+            digits: 'GPA is a Number'
+        }
+    }
+});
 
 function myFunction() {
     var x = document.getElementById("password");
@@ -74,6 +228,7 @@ function myFunction() {
 
 function Insert() {
     const empRegister = new Object(); //sesuaikan sendiri nama objectnya dan beserta isinya
+
 
     //ini ngambil value dari tiap inputan di form nya
     empRegister.FirstName = $("#firstName").val();
@@ -88,23 +243,32 @@ function Insert() {
     empRegister.GPA = $("#gpa").val();
     empRegister.University_Id = Number($("#show-univ").val());
 
-    console.log(empRegister);
-    
-    //isi dari object kalian buat sesuai dengan bentuk object yang akan di post
-    $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        type: "POST",
-        url: "https://localhost:44323/API/Account/register",
-        dataType: "json",
-        data: JSON.stringify(empRegister)
+    Swal.fire({
+        title: 'Register Validation',
+        text: `Register Employee`,
+        showCancelButton: true,
+        confirmButtonColor: "#0000FF",
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            type: "POST",
+            url: "https://localhost:44323/API/Account/register",
+            dataType: "json",
+            data: JSON.stringify(empRegister)
         }).done((result) => {
-            console.log("Succes Insert");
+            window.location.reload();
         }).fail((error) => {
             console.log(error);
         })
+    })
+    
+    //isi dari object kalian buat sesuai dengan bentuk object yang akan di post
+    
 }
 
 function Update(nik) {
@@ -154,7 +318,7 @@ function Update(nik) {
                     <label for="Gender">Gender</label>
                     <input type="text" name="Gender" value = "${gen}" disabled class="form-control" id = "u-gender">
                 </div>
-                `
+                `;
 
         $('#form-id').html(text);
     }).fail((error) => {
@@ -271,7 +435,21 @@ function Delete(nik) {
     }) 
 }
 
+//$("#form").validate({
+//    rules:{
+//        firstname: {
+//            minlength: 2,
+//            messages: {
+//                required: "Please Enter your name",
+//                minlength: "Name "
+//            }
+//        }
+//    }
 
+//    submitHandler: function (form) {
+//        form.submit();
+//    }
+//});
 
 //$.ajax({//
 //    url: "https://localhost:44323/API/Employee/EmployeeMasterData/",
