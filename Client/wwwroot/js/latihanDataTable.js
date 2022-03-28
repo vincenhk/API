@@ -2,7 +2,7 @@
 //BUAT COUNT GENDER DAN CHART
 $.ajax({
     type: "GET",
-    url: "https://localhost:44323/Api/Employee/CountGender",
+    url: "https://localhost:44323/Api/Employees/CountGender",
     data: {}
 }).done((result) => {
     var options = {
@@ -37,6 +37,7 @@ $.ajax({
     console.log(err);
 });
 
+            //"url": "https://localhost:44323/API/Employees/EmployeeMasterData",
 $(document).ready(function () {
     var table = $("#table_id").DataTable({
         columnDefs: [
@@ -51,7 +52,7 @@ $(document).ready(function () {
         ],
         
             "ajax": {
-            "url": "https://localhost:44323/API/Employee/EmployeeMasterData",
+                "url": "../Employees/Getallprofile",
                 "dataTe": "JSON",
                 "dataSrc": ""
             },
@@ -254,7 +255,7 @@ function Insert() {
 function Update(nik) {
     $.ajax({
         type: "GET",
-        url: `https://localhost:44323/API/Employee/${nik}`,
+        url: `../Employees/get/${nik}`,
         dataType: 'json'
     }).done((result) => {
         var text = "";
@@ -311,7 +312,7 @@ function getGenderSum() {
     var fimale = [];
 
     $.ajax({
-        url: "https://localhost:44323/API/Employee",
+        url: "https://localhost:44323/API/Employees",
         dataType: "json"
     }).done((result) => {
         var gender = result.gender;
@@ -348,7 +349,7 @@ function updateEmp() {
 
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:44323/API/Employee`,
+                url: `https://localhost:44323/API/Employees`,
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify(empUpdt)
@@ -415,7 +416,7 @@ function Delete(nik) {
         if (result.isConfirmed) {
             $.ajax({
                 type: 'delete',
-                url: `https://localhost:44323/API/Employee/${nik}`,
+                url: `../Employees/delete/${nik}`,
                 async: false
             }).done((deleted => {
                 Swal.fire(
@@ -430,6 +431,37 @@ function Delete(nik) {
         }
     }) 
 }
+
+
+//delete API
+//function Delete(nik) {
+//    Swal.fire({
+//        title: 'Delete Employee?',
+//        text: `Sure data with ${nik} will deleted?`,
+//        icon: 'warning',
+//        showCancelButton: true,
+//        confirmButtonColor: "#0000FF",
+//        confirmButtonText: 'Yes',
+//        cancelButtonText: 'No'
+//    }).then((result) => {
+//        if (result.isConfirmed) {
+//            $.ajax({
+//                type: 'delete',
+//                url: `https://localhost:44323/API/Employees/${nik}`,
+//                async: false
+//            }).done((deleted => {
+//                Swal.fire(
+//                    'Deleted Employee',
+//                ).then((result) => {
+//                    window.location.reload();
+//                })
+//            })
+//            ).fail((error) => {
+//                console.log(error);
+//            })
+//        }
+//    }) 
+//}
 
 //$("#form").validate({
 //    rules:{

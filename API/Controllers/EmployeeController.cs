@@ -9,10 +9,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeesController : ControllerBase
+    public class EmployeeController : ControllerBase
     {
         private readonly EmployeeRepository employeeRepositiory;
-        public EmployeesController(EmployeeRepository employeeRepositiory)
+        public EmployeeController(EmployeeRepository employeeRepositiory)
         {
             this.employeeRepositiory = employeeRepositiory;
         }

@@ -33,16 +33,16 @@ namespace Client.Base
         }
 
         [HttpPost]
-        public JsonResult Post(TEntity entity)
+        public JsonResult Post([FromBody] TEntity entity)
         {
             var result = repository.Post(entity);
             return Json(result);
         }
 
         [HttpPut]
-        public JsonResult Put(TId id, TEntity entity)
+        public JsonResult Put([FromBody] TEntity entity)
         {
-            var result = repository.Put(id, entity);
+            var result = repository.Put(entity);
             return Json(result);
         }
 

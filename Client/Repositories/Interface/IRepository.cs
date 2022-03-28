@@ -12,7 +12,7 @@ namespace Client.Repositories.Interface
         Task<List<T>> Get();
         Task<T> Get(X id);
         HttpStatusCode Post(T entity);
-        HttpStatusCode Put(X id, T entity);
+        HttpStatusCode Put(T entity);
         HttpStatusCode Delete(X id);
     }
 }

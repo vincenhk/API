@@ -12,11 +12,11 @@ namespace API.Controllers.Data
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : BaseController<Employee, EmployeeRepository, string>
+    public class EmployeesController : BaseController<Employee, EmployeeRepository, string>
     {
         private readonly EmployeeRepository repository;
         public IConfiguration _configuration;
-        public EmployeeController(EmployeeRepository employeeRepository, IConfiguration configuration) : base(employeeRepository)
+        public EmployeesController(EmployeeRepository employeeRepository, IConfiguration configuration) : base(employeeRepository)
         {
             this.repository = employeeRepository;
             this._configuration = configuration;

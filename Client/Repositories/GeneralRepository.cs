@@ -62,10 +62,10 @@ namespace Client.Repositories
             return entity;
         }
 
-        public HttpStatusCode Put(TId id, TEntity entity)
+        public HttpStatusCode Put(TEntity entity)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
-            var result = httpClient.PutAsync(request + id, content).Result;
+            var result = httpClient.PutAsync(address.link + request, content).Result;
             return result.StatusCode;
         }
 
