@@ -21,7 +21,7 @@ $.ajax({
             breakpoint: 200,
             options: {
                 chart: {
-                    width: 200
+                    width: 20
                 },
                 legend: {
                     position: 'bottom'
@@ -73,17 +73,14 @@ $(document).ready(function () {
                 { "data": "email" },
                 { "data": "birthDate"},
                 {
-                    "data": null,
-                    render: function (data, type, row) {
-                        return `Rp.${row.salary},00`
-                    }
+                    "data": "salary",
+                    render: $.fn.dataTable.render.number('.', ',', 0, 'Rp. ')
                 },
                 { "data": "universityName" },
                 { "data": "degree" },
                 {
                     "data": null,
                     render: function (data, type, row) {
-
                         return `<div class = "row">
                                 <button type="button" id="" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate" onclick = "Update(${data.nik})"><span class="bi bi-pencil-fill"> </span> </button> &nbsp;
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDelete" id = "btnDelete" onclick = "Delete(${data.nik})"><span class="bi bi-trash3-fill"> </span> </button> &nbsp;
@@ -244,7 +241,9 @@ function Insert() {
         }).done((result) => {
             window.location.reload();
         }).fail((error) => {
-            console.log(error);
+            Swal.fire(
+                'Failed Register',
+            )
         })
     })
     

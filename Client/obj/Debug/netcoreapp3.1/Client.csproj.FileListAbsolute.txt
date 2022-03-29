@@ -210,7 +210,6 @@ C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Hom
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Index.cshtml.g.cs
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
-C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDataTable.cshtml.g.cs
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLatihan.cshtml.g.cs
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -281,3 +280,6 @@ C:\Users\A S U S\source\repos\API\Client\bin\Debug\netcoreapp3.1\runtimes\win\li
 C:\Users\A S U S\source\repos\API\Client\bin\Debug\netcoreapp3.1\API.dll
 C:\Users\A S U S\source\repos\API\Client\bin\Debug\netcoreapp3.1\API.pdb
 C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+C:\Users\A S U S\source\repos\API\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\LoginLayout.cshtml.g.cs
