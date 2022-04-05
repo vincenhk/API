@@ -6,6 +6,6 @@ namespace API.ViewModel
     {
         public string Email { get; set; }
         public string Password { get; set; }
-        public Array Roles { get; set; }
+        public string Roles { get; set; }
     }
 }

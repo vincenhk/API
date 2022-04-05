@@ -15,7 +15,6 @@ namespace API.Repository.Data
     public class AccountRepository : GeneralRepository<MyContext, Account, int>
     {
         private readonly MyContext context;
-        private IConfiguration _configuration;
         public AccountRepository(MyContext myContext) : base(myContext)
         {
             this.context = myContext;
@@ -277,12 +276,12 @@ namespace API.Repository.Data
 
         public LoginVM GetUserData(string email)
         {
-            var dataRole = (from e in context.Employees
-                            join a in context.Accounts on e.NIK equals a.NIK
-                            join ar in context.accountRole on a.NIK equals ar.NIK
-                            join r in context.role on ar.RoleId equals r.Id
-                            where e.Email == email
-                            select r.Name).ToArray();
+            //var dataRole = (from e in context.Employees
+            //                join a in context.Accounts on e.NIK equals a.NIK
+            //                join ar in context.accountRole on a.NIK equals ar.NIK
+            //                join r in context.role on ar.RoleId equals r.Id
+            //                where e.Email == email
+            //                select r.Name).ToArray();
 
             //return new AccRoleVM
             //{
@@ -290,20 +289,21 @@ namespace API.Repository.Data
             //    Roles = dataRole.name
             //};
 
-            //var data = context.Employees.Join(context.Accounts, e => e.NIK, a => a.NIK, (e, a) => new { e, a })
-            //.Join(context.accountRole, ea => ea.a.NIK, ar => ar.NIK, (ea, ar) => new { ea, ar })
-            //.Join(context.role, accRol => accRol.ar.Id, r => r.Id, (accRol, r) => new { accRol, r })
-            //.Select(d => new
-            //{
-            //    Email = d.accRol.ea.e.Email,
-            //    NIK = d.accRol.ea.e.NIK,
-            //    Role = d.r.Name
-            //}).Where(e => e.Email == email);
+            var data = context.Employees.Join(context.Accounts, e => e.NIK, a => a.NIK, (e, a) => new { e, a })
+            .Join(context.accountRole, ea => ea.a.NIK, ar => ar.NIK, (ea, ar) => new { ea, ar })
+            .Join(context.role, accRol => accRol.ar.Id, r => r.Id, (accRol, r) => new
+            {
+                Email = accRol.ea.e.Email,
+                NIK = accRol.ea.e.NIK,
+                Role = r.Name
+            }).SingleOrDefault(e => e.Email == email);
+            
 
             LoginVM acc = new LoginVM
             {
-                Email = email,
-                Roles = dataRole
+                Email = data.Email,
+                Password = "",
+                Roles = data.Role
             };
 
             return acc;

@@ -1,4 +1,5 @@
 ﻿
+
 //BUAT COUNT GENDER DAN CHART
 $.ajax({
     type: "GET",
@@ -37,7 +38,7 @@ $.ajax({
     console.log(err);
 });
 
-            //"url": "https://localhost:44323/API/Employees/EmployeeMasterData",
+//"url": "https://localhost:44323/API/Employees/EmployeeMasterData",
 $(document).ready(function () {
     var table = $("#table_id").DataTable({
         columnDefs: [
@@ -53,7 +54,7 @@ $(document).ready(function () {
         
             "ajax": {
                 "url": "../Employees/Getallprofile",
-                "dataTe": "JSON",
+                "dataType": "JSON",
                 "dataSrc": ""
             },
             "columns": [
@@ -96,6 +97,29 @@ $(document).ready(function () {
     getUniversity();
     getGenderSum();
 
+})
+
+$(document).ready(function () {
+    $.ajax({
+        url: "https://localhost:44323/API/Roles/InfoEmployeeRole"
+    }).done((result) => {
+        /* console.log(result.results);*/
+        var text = "";
+        //looping eachj
+        $.each(result, (function (key, val) {
+            text += `<tr>
+            <td>${key + 1}</td>
+            <td>${val.name}</td>
+            <td>${val.email}</td>
+            <td>${val.roleName}</td>
+        </tr>`;
+        })
+        )
+        /*    console.log(text);*/
+        $('#table_info').html(text);
+    }).fail((err) => {
+        console.log(err);
+    })
 })
 
 
@@ -325,7 +349,7 @@ function getGenderSum() {
 function updateEmp() {
     Swal.fire({
         title: 'Edit Biodata?',
-        text: `Sure data with ${nik} will Edit?`,
+        text: `Sure data with will Edit?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: "#0000FF",

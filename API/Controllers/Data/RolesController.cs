@@ -18,9 +18,15 @@ namespace API.Controllers.Data
             this.repository = repository;
         }
 
-        [Authorize(Roles = "Directure")]
         [HttpGet("testJWT")]
         public ActionResult TestJWT()
+        {
+            var result = repository.RegistredEmployee();
+            return Ok(result);
+        }
+        
+        [HttpGet("InfoEmployeeRole")]
+        public ActionResult GetInfo()
         {
             var result = repository.RegistredEmployee();
             return Ok(result);

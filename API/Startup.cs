@@ -32,6 +32,13 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);//set 10 menit   
+            });
+
             services.AddScoped<EmployeeRepository>();
             services.AddScoped<UniversityRepository>();
             services.AddScoped<AccountRepository>();
@@ -69,6 +76,20 @@ namespace API
                     ClockSkew = TimeSpan.Zero
                 };
             });
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            //{
+            //    options.RequireHttpsMetadata = false;
+            //    options.SaveToken = true;
+            //    options.TokenValidationParameters = new TokenValidationParameters()
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidAudience = Configuration["Jwt:Audience"],
+            //        ValidIssuer = Configuration["Jwt:Issuer"],
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+            //    };
+            //});
 
             services.AddCors(c =>
             {

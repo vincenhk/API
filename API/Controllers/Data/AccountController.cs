@@ -68,7 +68,7 @@ namespace API.Controllers.Data
             }
         }
 
-        [HttpGet("Login")]
+        [HttpPost("Login")]
         public ActionResult Login(LoginVM login) 
         {
 
@@ -103,7 +103,6 @@ namespace API.Controllers.Data
                         claimes.Add(new Claim("roles", item.Name));
                     }
                         
-
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
                     var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                     var token = new JwtSecurityToken(
